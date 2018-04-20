@@ -1,0 +1,222 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>Programmatic_Microservices</groupId>
+	<artifactId>Programmatic_Microservices</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.3.0.RELEASE</version>
+	</parent>
+	<!-- Config Server Configuration Changes Start -->
+
+	<properties>
+		<spring-cloud.version>Edgware.SR3</spring-cloud.version>
+	</properties>
+
+	<!-- Config Server Configuration Changes end -->
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- <dependency> <groupId>org.springframework.data</groupId> <artifactId>spring-data-jpa</artifactId> 
+			</dependency> <dependency> <groupId>org.hibernate.javax.persistence</groupId> 
+			<artifactId>hibernate-jpa-2.1-api</artifactId> <version>1.0.0.Final</version> 
+			</dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!-- <dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
+		</dependency> -->
+    	<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.3</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-tomcat</artifactId>
+	        <scope>provided</scope>
+    	</dependency>
+    	<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-staticdocs</artifactId>
+		    <version>2.4.0</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger-ui</artifactId>
+		    <version>2.4.0</version>
+		</dependency>
+   	<!-- Config Server Configuration Changes start -->
+
+		<dependency>
+			<groupId>io.pivotal.spring.cloud</groupId>
+			<artifactId>spring-cloud-services-starter-config-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.5.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.5.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.5.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+			<version>2.5.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-jaxb-annotations</artifactId>
+			<version>2.5.2</version>
+		</dependency>
+		<!-- Config Server Configuration Changes end -->
+
+	</dependencies>
+
+	<!-- Config Server Configuration Changes start -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.pivotal.spring.cloud</groupId>
+				<artifactId>spring-cloud-services-dependencies</artifactId>
+				<version>1.2.0.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Brixton.SR6</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<!-- Config Server Configuration Changes end -->
+     <build>
+		<!-- <finalName>rating-prod</finalName> -->
+		<sourceDirectory>src/webapp</sourceDirectory>
+		<resources>
+	     <resource>
+	       <directory>conf</directory>
+	     </resource>
+	     <resource>
+	       <directory>api-docs</directory>
+	     </resource>
+	   	</resources>
+        <plugins>
+           <!--<plugin>
+		      <groupId>org.springframework.boot</groupId>
+		      <artifactId>spring-boot-maven-plugin</artifactId>
+		      <executions>
+		        <execution>
+		          <goals>
+		            <goal>repackage</goal>
+		          </goals>
+		        </execution>
+		      </executions>
+		    </plugin>-->
+	 <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+        </configuration>
+    </plugin>
+    <plugin>
+			  <groupId>org.asciidoctor</groupId>
+			  <artifactId>asciidoctor-maven-plugin</artifactId>
+			  <version>1.5.2</version>
+			  <executions>
+			    <execution>
+			      <id>output-html</id>
+			      <phase>test</phase>
+			      <goals>
+			        <goal>process-asciidoc</goal>
+			      </goals>
+			      <configuration>
+			        <backend>html5</backend>
+			        <outputDirectory>target/classes/static/docs/html</outputDirectory>
+			      </configuration>
+			    </execution>
+			    <execution>
+			      <id>output-pdf</id>
+			      <phase>test</phase>
+			      <goals>
+			        <goal>process-asciidoc</goal>
+			      </goals>
+			      <configuration>
+			        <backend>pdf</backend>
+			        <outputDirectory>target/classes/static/docs/pdf</outputDirectory>
+			      </configuration>
+			    </execution>
+			  </executions>
+			  <dependencies>
+			    <dependency>
+			      <groupId>org.asciidoctor</groupId>
+			      <artifactId>asciidoctorj-pdf</artifactId>
+			      <version>1.5.0-alpha.8</version>
+			    </dependency>
+			  </dependencies>
+			  <configuration>
+			    <sourceDirectory>target/classes/static/docs/asciidoc</sourceDirectory>
+			    <sourceDocumentName>index.adoc</sourceDocumentName>
+			    <attributes>
+			      <doctype>book</doctype>
+			      <toc>left</toc>
+			      <toclevels>2</toclevels>
+			      <generated>generated</generated>
+			    </attributes>
+			  </configuration>
+			</plugin>
+        </plugins>
+    </build>
+</project>

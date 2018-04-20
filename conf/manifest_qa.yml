@@ -1,0 +1,13 @@
+---
+applications:
+- name: rating-qa
+  instances: 1
+  memory: 2G
+  path: ../Programmatic_Microservices-0.0.1-SNAPSHOT.war
+  host: rating-qa
+  buildpack: java_buildpack_offline
+env:
+   CF_STAGING_TIMEOUT: 50
+   CF_STARTUP_TIMEOUT: 100     
+   SPRING_PROFILES_ACTIVE: qa
+   JAVA_OPTS: -Dnewrelic.config.proxy_host=proxy.inbcu.com -Dnewrelic.config.proxy_port=80

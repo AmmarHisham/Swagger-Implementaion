@@ -1,0 +1,11 @@
+---
+applications:
+- name: rating-qa
+  instances: 1
+  memory: 2G
+  path: ..\target\rating-prod.war
+  host: rating-qa
+env:
+   CF_STAGING_TIMEOUT: 50
+   CF_STARTUP_TIMEOUT: 100      
+   SPRING_PROFILES_ACTIVE: qa
